@@ -1,12 +1,13 @@
-Brute force sign in script
+# Brute Force Sign-In Script
 
-No password were found during the sql injections
-So let's make a script to brute force the sign in form
+This text describes a brute force sign-in script used to find the correct username and password combination for the sign-in form. The attacker can use a list of commonly used usernames and passwords to try to log in to the form.
 
-We're going to do search for most used usernames and passwords.
-Make a list of it and then iterate until we find a "flag" string on the response text:
+## Steps to Perform the Attack
 
-"http://192.168.56.101/?page=signin&username={username}&password={password}&Login=Login"
+1. Create a list of commonly used usernames and passwords.
+2. Iterate through the list until finding a valid username and password combination using the following URL: `http://192.168.56.101/?page=signin&username={username}&password={password}&Login=Login`.
+3. Stop the script when the correct username and password combination is found.
 
-The script stops at username: admin password: shadow
-But it seems like only the password was needed to get the flag.
+## Additional Information
+
+The brute force sign-in script can be used to find weak passwords and usernames.
