@@ -1,15 +1,12 @@
-xss injection on the nsa page
+# XSS Injection on NSA Page
 
-Clicking on the nsa image sends use to http://192.168.56.101/?page=media&src=nsa
-"src=" seems to be the path of a ressource if we try "test" we'll get a 404 small page embedded in the center of the error page
-now let try the root "/", we get a small embedded homepage instead of the error 404
+This text describes an XSS injection vulnerability on the NSA page. The attacker can exploit this vulnerability by injecting malicious code into the search input to execute arbitrary code on the page.
 
-Let's try to send a script by using the data tag:
-http://192.168.56.101/?page=media&src=data:text/html,<script>alert('42');</script>
+## Steps to Perform the Attack
 
-The page seems to exec the script properly but we still didn't get the flag
-
-let's try to encode it in base64
-http://192.168.56.101/?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnNDInKTs8L3NjcmlwdD4=
-
-Et voilà
+1. Click on the NSA image to go to http://192.168.56.101/?page=media&src=nsa.
+2. Enter a test string in the `src` parameter to see the 404 error page embedded in the center of the page.
+3. Try entering the root `/` to see a small embedded homepage instead of the error 404.
+4. Inject a script using the `data` tag to execute arbitrary code on the page: `http://192.168.56.101/?page=media&src=data:text/html,<script>alert('42');</script>`.
+5. If the script is executed properly, encode it in base64: `http://192.168.56.101/?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnNDInKTs8L3NjcmlwdD4=`.
+6. The flag should be displayed on the page.
