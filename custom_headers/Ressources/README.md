@@ -1,30 +1,14 @@
-Custom headers breach (referer and user-agent)
+# Custom Headers Breach (Referer and User-Agent)
 
-At the bottom of the header when clicking on the borntosec copyright it redirects us to this link
-http://192.168.56.101/index.php?page=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f
+This text describes how to access a page that requires specific headers (Referer and User-Agent) to be set in the HTTP request. The page can only be accessed if the Referer is set to "https://www.nsa.gov/" and the User-Agent is set to "ft_bornToSec".
 
-When inspecting this page carefully we get those two interesting comments:
+## Steps to Perform the Attack
 
-<!--
-You must come from : "https://www.nsa.gov/".
--->
+1. Set the Referer header to "https://www.nsa.gov/" in the HTTP request.
+2. Set the User-Agent header to "ft_bornToSec" in the HTTP request.
+3. Make the HTTP request to the page that requires the specific headers.
+4. Access the page and retrieve the flag.
 
-and:
-Let's use this browser : "ft_bornToSec". It will help you a lot.
+## Additional Information
 
-it means that we have to access this page with https://www.nsa.gov/ as referer and ft_bornToSec as user-agent
-notes:
-
-Referer is an optional header field that allows the client to specify, for the server’s benefit, the address ( URI ) of the document (or element within the document) from which the URI in the request was obtained.
-source : https://resources.infosecinstitute.com/topic/sql-injection-http-headers/
-
-User agent is an HTTP header field gives the software program used by the original client
-
-curl --referer "https://www.nsa.gov/" http://192.168.56.101/index.php\?page\=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f
-we get this line:
-FIRST STEP DONE<audio id="best_music_ever" src="audio/music.mp3"preload="true" loop="loop" autoplay="autoplay">
-
-now let's add the user-agent:
-curl --referer "https://www.nsa.gov/" --user-agent "ft_bornToSec" http://192.168.56.101/index.php\?page\=b7e44c7a40c5f80139f0a50f3650fb2bd8d00b0d24667c4c2ca32c88e13b758f
-
-Bingo we got the flag
+Setting custom headers in an HTTP request can be used to bypass security measures and gain access to pages that are restricted.
