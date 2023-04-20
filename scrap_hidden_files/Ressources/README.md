@@ -1,6 +1,5 @@
-scrap hidden files
+# Scrap Hidden Files
 
-After looking at the whatever file in the robots.txt, we're now going to look at the .hidden files
-We're going to create a scrapping script to retrieve all the text in one file(in python)
+Après avoir examiné le fichier whatever dans le robots.txt, nous allons maintenant examiner les fichiers .hidden. Nous allons créer un script de scrapping en Python pour récupérer tout le texte dans un seul fichier.
 
-Once done, either use "grep -P '(?<!\d)\d{4}(?!\d)' results.txt" or simply CTRL + F a figit in the file to find the flag
+Une fois cela fait, utilisez soit "grep -P '(?<!\d)\d{4}(?!\d)' results.txt" soit simplement CTRL + F pour rechercher un chiffre dans le fichier afin de trouver le flag.
